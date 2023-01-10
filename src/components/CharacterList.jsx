@@ -6,7 +6,7 @@ function CharacterList() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [lastPage, setLastPage] = useState(0)
+  const [lastPage, setLastPage] = useState(() => {return 0})
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
@@ -40,7 +40,7 @@ function CharacterList() {
           })}
         </div>
       )}
-      <NavPage page={page} setPage={setPage} />
+      <NavPage page={page} setPage={setPage} lastPage={lastPage} />
     </div>
   );
 }
